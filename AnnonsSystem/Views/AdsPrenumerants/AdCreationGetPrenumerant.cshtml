@@ -1,0 +1,18 @@
+﻿@Model AnnonsSystem.LinkedDtos.PrenumerantDto;
+<div>
+
+    <h3 class="display-4">Fetch prenumerant</h3>
+  
+    @if (TempData["FetchError"] != null && TempData["FetchError"] as bool? == true )
+    {   
+        <div>Could not fetch prenumerant</div>
+    }
+      
+        <form method="get">
+            <input type="text" name="prenumerantId" > 
+            <button asp-controller="AdsPrenumerants" asp-action="AdCreationEditPrenumerant">Hämta</button>
+
+        </form>
+
+    </div>
+

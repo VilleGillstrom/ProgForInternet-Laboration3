@@ -1,0 +1,16 @@
+﻿@model PrenumerantSystem.Models.PrenumerantDto;
+
+<div>
+    <h3 class="display-4">Edit prenumerant</h3>
+    <form method="get">
+        Prenumerant Nummer: <input type="text" name="PrenumerantNummer" value=@Model.PrenumerantNummer readonly /> <br />
+        Förnamn: <input asp-for="Fornamn" /> <br />
+        Efternamn: <input asp-for="Efternamn" /> <br />
+        Personnummer: <input asp-for="Personnummer" /> <br />
+        Postnummer:<input asp-for="Postnummer" /> <br />
+        Adress: <input asp-for="Utdelningsadress" /> <br />
+
+        <button asp-controller="AdsPrenumerants" asp-action="AdCreationAdInfo">Fortsätt</button>
+    </form>
+
+</div>

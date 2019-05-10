@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Mvc;
+@*@model IEnumerable<AnnonsSystem.Models.AdDto>;*@
+@model IEnumerable<AnnonsSystem.Models.AdDto>;
+
+<h3>Annonser:</h3>
+
+@foreach (var item in Model)
+{
+<pr>
+    Rubrik : @item.Rubrik  <br>
+    Innehåll : @item.Innehall <br>
+    Annonsörtyp : @item.AnnonsorType <br>
+    Pris vara : @item.PrisVara <br>
+    Pris annons : @item.PrisAnnons <br>
+    <hr />
+   
+
+</pr>
+}

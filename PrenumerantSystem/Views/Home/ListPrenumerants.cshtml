@@ -1,0 +1,17 @@
+﻿@model IEnumerable<PrenumerantSystem.Models.PrenumerantDto>;
+<h2>@ViewData["Title"]</h2>
+
+@foreach (var item in Model)
+{
+<pr>
+    PrenumerantNummer: @item.PrenumerantNummer <br>
+    Rubrik : @item.Fornamn <br>
+    Innehåll : @item.Efternamn<br>
+    Annonörtyp : @item.Personnummer<br>
+    Pris vara : @item.Postnummer <br>
+    Pris annons : @item.Utdelningsadress <br>
+    <hr />
+
+
+</pr>
+}

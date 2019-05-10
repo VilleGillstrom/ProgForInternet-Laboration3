@@ -1,0 +1,24 @@
+﻿@model AnnonsSystem.Models.AdForetagDto
+
+<div>
+    <h5 class="display-4">Annons</h5>
+    <form method="post">
+        <input type="hidden" asp-for="foretagDto.Namn" />
+        <input type="hidden" asp-for="foretagDto.Organisationsnummer" />
+        <input type="hidden" asp-for="foretagDto.Ort" />
+        <input type="hidden" asp-for="foretagDto.Postnummer" /> <br />
+        <input type="hidden" asp-for="foretagDto.Telefonnummer" />
+        <input type="hidden" asp-for="foretagDto.Utdelningsadress" />
+        <input type="hidden" asp-for="foretagDto.Faktura_Adress" />
+        <input type="hidden" asp-for="foretagDto.Faktura_Ort" />
+        <input type="hidden" asp-for="foretagDto.Faktura_Postnummer" />
+
+        Rubrik: <input asp-for="Ad.Rubrik" /> <br />
+        Innehåll: <input asp-for="Ad.Innehall" /> <br />
+        Pris vara: <input asp-for="Ad.PrisVara" /> <br />
+        Pris: <input asp-for="Ad.PrisAnnons" readonly /> <br />
+        <button asp-controller="AdsForetag" asp-action="Create">Skapa</button>
+
+    </form>
+
+</div>

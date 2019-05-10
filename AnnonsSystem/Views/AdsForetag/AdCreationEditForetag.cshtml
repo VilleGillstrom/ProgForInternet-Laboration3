@@ -1,0 +1,25 @@
+﻿@model AnnonsSystem.Models.ForetagDto;
+
+<div>
+    <h3 class="display-4">Edit Foretag</h3>
+    @if (TempData["BadForetag"] != null && TempData["BadForetag"] as bool? == true )
+    {   
+        <div>Inte okej företag</div>
+    }
+
+<form method="get">
+    Namn:                <input asp-for="Namn" /> <br />
+    Organisationsnummer: <input asp-for="Organisationsnummer" /> <br />
+    Ort:                 <input asp-for="Ort" /> <br />
+    Postnummer:          <input asp-for="Postnummer" /> <br />
+    Telefonnummer:       <input asp-for="Telefonnummer" /> <br />
+    Utdelningsadress:    <input asp-for="Utdelningsadress" /> <br />
+    <hr />
+    Faktura_Adress:      <input asp-for="Faktura_Adress" /> <br />
+    Faktura_Ort:         <input asp-for="Faktura_Ort" /> <br />
+    Faktura_Postnummer:  <input asp-for="Faktura_Postnummer" /> <br />
+    <hr />
+    <button asp-controller="AdsForetag" asp-action="AdCreationAdInfo">Fortsätt</button>
+</form>
+
+</div>

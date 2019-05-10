@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Mvc;
+@model AnnonsSystem.Models.Ads.AdPrenumerantDto;
+@{
+    ViewBag.Title = "Index";
+}
+<h1>Skapa annons</h1>
+
+
+<div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+
+
+    <div id="ad-creation">
+        <form onchange="showAdCreation()" name="frmRadio" id="radio-buttons" action="">
+            <input type="radio" id="radio-prenumerantannons" name="option" onclick="document.getElementById('radio-buttons').action='';">Prenumerant<br>
+            <input type="radio" id="radio-foretagsannons" name="option" onclick="document.getElementById('radio-buttons').action='';">Foretag<br>
+        </form>
+        <div id="button">
+        </div>
+    </div>
+    <div id="annons-creation" display="none">
+
+    </div>
+
+</div>
+
+<script>
+    function showAdCreation() {
+        if (document.getElementById("radio-foretagsannons").checked) {
+            var url = '@Url.Action("AdCreationEditForetag", "AdsForetag", new { })';
+            window.open(url, "_self")
+        } else if (document.getElementById("radio-prenumerantannons").checked) {
+            var url = '@Url.Action("PrenumerantAdCreationFetchPrenumerant", "AdsPrenumerants", new { })';
+            window.open(url, "_self")
+        }
+
+    }
+
+
+</script>
+

@@ -1,0 +1,21 @@
+﻿@model AnnonsSystem.Models.Ads.AdPrenumerantDto
+
+<div>
+    <h5 class="display-4">Annons</h5>
+    <form method="post">
+        <input type="hidden" asp-for="prenumerantInfo.PrenumerantNummer" /> 
+        <input type="hidden" asp-for="prenumerantInfo.Fornamn" />
+        <input type="hidden" asp-for="prenumerantInfo.Efternamn" /> 
+        <input type="hidden" asp-for="prenumerantInfo.Personnummer" />
+        <input type="hidden" asp-for="prenumerantInfo.Postnummer" />
+        <input type="hidden" asp-for="prenumerantInfo.Utdelningsadress" />
+
+        Rubrik: <input asp-for="Ad.Rubrik" /> <br />
+        Innehåll: <input asp-for="Ad.Innehall" /> <br />
+        Pris vara: <input asp-for="Ad.PrisVara" /> <br />
+        Pris: <input asp-for="Ad.PrisAnnons" readonly/> <br />
+        <button asp-controller="AdsPrenumerants" asp-action="Create">Skapa</button>
+
+    </form>
+
+</div>
