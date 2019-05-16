@@ -11,29 +11,13 @@ using Xunit;
 
 namespace AnnonsSystemIntegrationTest
 {
-    public static class SeedData
-    {
-        public static void InitializeDbForTests(AnnonsContext db)
-        {
-            var adList = new List<Ad>()
-            {
-                new Ad(){Rubrik = "foo1", Innehall = "bar1", PrisAnnons = 40, PrisVara = 111 },
-                new Ad(){Rubrik = "foo2", Innehall = "bar2", PrisAnnons = 40, PrisVara = 222 },
-                new Ad(){Rubrik = "foo3", Innehall = "bar3", PrisAnnons = 40, PrisVara = 333 }
-            };
-    
-            db.Ads.AddRange(new List<Ad>(adList));
+  
 
-            db.SaveChanges();
-        }
-    }
-
-
-    public class IntegrationTests : IClassFixture<WebApplicationFactory<Startup>>
+    public class IntegrationTests : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
         private readonly WebApplicationFactory<Startup> _factory;
 
-        public IntegrationTests(WebApplicationFactory<Startup> factory)
+        public IntegrationTests(CustomWebApplicationFactory<Startup> factory)
         {
             _factory = factory;
         }
@@ -46,16 +30,33 @@ namespace AnnonsSystemIntegrationTest
         public async Task AdCreationAdInfo_home_endpoints_successfylly_reachable(string url)
         {
             // Creates a client to handle redirects
-            HttpClient client = _factory.CreateClient();
+            HttpClient client =   _factory.CreateClient();
 
             // Act
             var response = await client.GetAsync(url);
 
             // Assert
             response.EnsureSuccessStatusCode(); // Status Code 200-299
-            Assert.Equal("text/html; charset=utf-8",response.Content.Headers.ContentType.ToString());
+            Assert.Equal("text/html; charset=utf-8", response.Content.Headers.ContentType.ToString());
         }
 
+        [Fact]
+        public async Task AdCreationAdInfo_home_endpoints_successfylly_raaable()
+        {
+            // Creates a client to handle redirects
+            HttpClient client = _factory.CreateClient();
+            var defaultPage = await client.GetAsync("/" );
+
+            // Act
+            var response = await client.SendAsync(
+                (IHtmlFormElement)content.QuerySelector("form[id='messages']"),
+                (IHtmlButtonElement)content.QuerySelector("button[id='deleteAllBtn']")
+                );
+
+            // Assert
+            response.EnsureSuccessStatusCode(); // Status Code 200-299
+            Assert.Equal("text/html; charset=utf-8", response.Content.Headers.ContentType.ToString());
+        }
 
 
     }

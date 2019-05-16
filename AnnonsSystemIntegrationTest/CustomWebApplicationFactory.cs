@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using AnnonsSystem;
 using AnnonsSystem.Entities;
@@ -9,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AnnonsSystemIntegrationTest
 {
-    public class CustomWebApplicationFactory : WebApplicationFactory<Startup> 
+    public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
@@ -53,5 +54,22 @@ namespace AnnonsSystemIntegrationTest
                 }
             });
         }
+    }
+}
+
+public static class SeedData
+{
+    public static void InitializeDbForTests(AnnonsContext db)
+    {
+        var adList = new List<Ad>()
+        {
+            new Ad(){Rubrik = "foo1", Innehall = "bar1", PrisAnnons = 40, PrisVara = 111 },
+            new Ad(){Rubrik = "foo2", Innehall = "bar2", PrisAnnons = 40, PrisVara = 222 },
+            new Ad(){Rubrik = "foo3", Innehall = "bar3", PrisAnnons = 40, PrisVara = 333 }
+        };
+
+        db.Ads.AddRange(new List<Ad>(adList));
+
+        db.SaveChanges();
     }
 }
